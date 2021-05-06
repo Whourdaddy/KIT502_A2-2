@@ -153,10 +153,10 @@ if (isset($_GET['logout'])) {
 			</div>
 			<div class="Bk_tab">
 				<!-- <label>Check In:</label> -->
-				<input type="text" class='form-control' id="checkin" name="checkin" value="<?php echo $b_checkin; ?>">
+				<input type="text" class='form-control' id="checkin" name="b_checkin" value="<?php echo $b_checkin; ?>">
 			</div>
 			<div class="Bk_tab">
-				<input type="text" class='form-control' id="checkout" name="checkout" value="<?php echo $b_checkout; ?>">
+				<input type="text" class='form-control' id="checkout" name="b_checkout" value="<?php echo $b_checkout; ?>">
 			</div>
 			<div class="Bk_tab">
 				<!-- <label for="guest">Number of Guests</label> -->
