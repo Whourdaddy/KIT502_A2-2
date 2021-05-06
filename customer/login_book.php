@@ -108,8 +108,9 @@ if (isset($_GET['logout'])) {
 			$sql .= "AND house_city LIKE '%$Location%' ";
 		}
 		// check in date
-		if (isset($_POST['checkin']) && !empty($_POST['checkin'])) {
-			$checkin = $_POST['checkin'];
+		if (isset($_POST['b_checkin']) && !empty($_POST['b_checkin'])) {
+			$b_checkin = $_POST['b_checkin'];
+			$sql .= "AND house_checkin <= '$b_checkin'";
 			// $sql = "SELECT * FROM `house` WHERE `b_checkin` BETWEEN 
 			// house_checkin('$house_checkin','%d-%m-%Y') AND house_checkout('$house_checkout','%d-%m-%Y')";
 
@@ -119,15 +120,15 @@ if (isset($_GET['logout'])) {
 			// $sql .= 'house_checkin BETWEEN "' . $_POST["b_checkin"] . '" AND "' . $_POST["b_checkout"] . '" AND ';
 		}
 		// check out date
-		if (isset($_POST['checkout']) && !empty($_POST['checkout'])) {
-			$b_checkout = $_POST['checkout'];
-			$sql .= "AND house_checkout >= '%$checkout%'";
+		if (isset($_POST['b_checkout']) && !empty($_POST['b_checkout'])) {
+			$b_checkout = $_POST['b_checkout'];
+			$sql .= "AND house_checkout >= '$b_checkout'";
 			// $sql .= 'house_checkout BETWEEN "' . $_POST["start_date"] . '" AND "' . $_POST["end_date"] . '" AND ';
 		}
 		// guest
-		if (isset($_POST['guest']) && !empty($_POST['guest'])) {
-			$guest = $_POST['guest'];
-			$sql .= "AND house_guest LIKE '%$guest%' ";
+		if (isset($_POST['b_guest']) && !empty($_POST['b_guest'])) {
+			$b_guest = $_POST['b_guest'];
+			$sql .= "AND house_guest LIKE '%$b_guest%' ";
 		}
 		echo $sql;
 		$result = mysqli_query($db, $sql);
@@ -152,14 +153,14 @@ if (isset($_GET['logout'])) {
 			</div>
 			<div class="Bk_tab">
 				<!-- <label>Check In:</label> -->
-				<input type="text" class='form-control' id="checkin" name="checkin" value="<?php echo $checkin; ?>">
+				<input type="text" class='form-control' id="checkin" name="checkin" value="<?php echo $b_checkin; ?>">
 			</div>
 			<div class="Bk_tab">
-				<input type="text" class='form-control' id="checkout" name="checkout" value="<?php echo $checkout; ?>">
+				<input type="text" class='form-control' id="checkout" name="checkout" value="<?php echo $b_checkout; ?>">
 			</div>
 			<div class="Bk_tab">
 				<!-- <label for="guest">Number of Guests</label> -->
-				<input type="number" class='form-control' placeholder="Select guest" min="1" id="house_guest" name="guest" value="<?php echo $guest; ?>">
+				<input type="number" class='form-control' placeholder="Select guest" min="1" id="house_guest" name="guest" value="<?php echo $b_guest; ?>">
 			</div>
 			<div class="Bk_tab">
 				<input type="submit" class="Search_btn" value="Search" name="search_client">
